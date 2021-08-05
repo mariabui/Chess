@@ -21,7 +21,7 @@ public class BoardMouseListener implements MouseListener {
 
         // illegal conditions
             // move off board
-        if(startx<0 || startx>7 || starty<0 || endx<0 || endx>7 || endy<0 || endy>7) {
+        if(startx<0 || startx>=8 || starty<0 || endx<0 || endx>=8 || endy<0 || endy>=8) {
             return;
         }
             // move onto own color
