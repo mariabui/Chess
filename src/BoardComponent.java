@@ -11,16 +11,18 @@ public class BoardComponent extends JComponent {
             // use fillRect: needs top-left corner, width, height
                 // top left is 0,0
                 // width and height? Chess.PIECESIZE or 44
+            // make a nested for x and for y loop
+                // if x and y are both even (x%2==0) or both odd, then draw a dark square
+                // otherwise draw a light one
         for(int x=0; x<8; x++) {
             for(int y=0; y<8; y++) {
-                if(x%2 == y%2){
+                if(x%2==y%2){
                     g.setColor(lightbrown);
-                    g.fillRect(x*Chess.PIECESIZE, y*Chess.PIECESIZE, Chess.PIECESIZE, Chess.PIECESIZE);
                 }
                 else {
                     g.setColor(darkbrown);
-                    g.fillRect(x*Chess.PIECESIZE, y*Chess.PIECESIZE, Chess.PIECESIZE, Chess.PIECESIZE);
                 }
+                g.fillRect(x*Chess.PIECESIZE, y*Chess.PIECESIZE, Chess.PIECESIZE, Chess.PIECESIZE);
             }
         }
 
@@ -28,7 +30,7 @@ public class BoardComponent extends JComponent {
         for(int x=0; x<8; x++) {
             for(int y=0; y<8; y++){
                 if(Chess.position[x][y]!=null) {
-                    g.drawImage(Chess.position[x][y].image.getImage(),x*Chess.PIECESIZE,y*Chess.PIECESIZE,null);
+                    Piece.drawPiece(x, y, g);
                 }
             }
         }
